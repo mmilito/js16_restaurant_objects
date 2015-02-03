@@ -36,10 +36,10 @@ $(document).on('ready', function() {
  var mashedPotatoes =new FoodItem("Mashed Taters",1250,false,true,true);
  var greenBeans = new FoodItem("Green Beans",250,true,true,true);
 
-//console.log FoodItem
-//console.log(burrito.toString());
-//console.log(mexicanRice.toString());
-//console.log(gluFreeGuac.toString());
+	//console.log FoodItem
+	//console.log(burrito.toString());
+	//console.log(mexicanRice.toString());
+	//console.log(gluFreeGuac.toString());
 
 
 //Drink constructor
@@ -163,7 +163,7 @@ var menuItem1 = new Menu(bluePlate,margarita);
 var menuItem2 = new Menu(redPlate,margarita);
 var menuItem3 = new Menu(yellowPlate,margarita);
 var menuItem4 = new Menu(guacPlate,margarita);
-	console.log(menuItem4);
+	//console.log(menuItem4);
 
 Menu.prototype.toString = function() {
  	var menuInfo = "Menu (made up of plates and a margarita): \n"+this.plate +"\n"
