@@ -77,6 +77,7 @@ var Plate = function(plateName,plateDescription,platePrice,plateIngredients){
  var bluePlate = new Plate("Blue Plate Special","Sunday Brunch Only",10.50,[burrito,tortillaChips,salsa]);
  var redPlate = new Plate("Red Plate Special","Monday Dinner Only",12.50,[fajitas,blackBeans,mexicanRice]);
  var yellowPlate = new Plate("Yellow Plate Special","Tuesday Dinner Only",15.00,[primeRib,mashedPotatoes,greenBeans]);
+ var guacPlate = new Plate("Guacamole Plate","Vegan Choice",10.00,[mexicanRice,gluFreeGuac,tortillaChips]);
 
 	// console.log(bluePlate.plateIngredients);
 
@@ -93,12 +94,37 @@ Plate.prototype.toString = function() {
 
 // ***********
 // ***********
-// Plate.prototype.isVegan = function() {
-//	plateIngredients.find(function { ** write inline function to return true if vegan = true})
- // }
+Plate.prototype.isVegan = function() {
+	var temp=false;
+	var temp2=[];
+	for (var i=0;i<this.plateIngredients.length;i++) {
+
+		$.each(this.plateIngredients[i],function(key, value){
+				
+			if (key==="vegan"){
+					if (value===true){
+					//console.log("true");
+					temp=true;
+				
+				} 
+			else {
+				temp=false;
+				console.log("false");
+				return false;
+
+			} }
+				
+				//}
+		}); //each loop end
+	}; // for loop end
+	return temp;
+  }; //prototype end
+
 //************
 //***********
 
+console.log(bluePlate.isVegan());
+//console.log(bluePlate);
 
 
 //Order constructor
