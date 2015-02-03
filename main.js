@@ -92,40 +92,48 @@ Plate.prototype.toString = function() {
 	//	console.log(bluePlate.toString());
 	//console.log(bluePlate.plateIngredients);
 
-// ***********
-// ***********
-Plate.prototype.isVegan = function() {
-	var temp=false;
-	var temp2=[];
-	for (var i=0;i<this.plateIngredients.length;i++) {
+	//console.log(guacPlate.isVegan());
 
-		$.each(this.plateIngredients[i],function(key, value){
-				
-			if (key==="vegan"){
-					if (value===true){
-					//console.log("true");
-					temp=true;
-				
-				} 
-			else {
-				temp=false;
-				console.log("false");
-				return false;
 
-			} }
-				
-				//}
-		}); //each loop end
-	}; // for loop end
-	return temp;
-  }; //prototype end
 
-//************
-//***********
+// isVegan method
 
-console.log(bluePlate.isVegan());
-//console.log(bluePlate);
+Plate.prototype.isVegan = function(){
+  var temp=true;
+  for(var i=0;i<this.plateIngredients.length;i++){
+  	if (this.plateIngredients[i].glutenFree===false){
+		temp=false;
+  	} 
+  	return temp;
+   }	
+};
 
+
+// is GlutenFree method
+Plate.prototype.isGlutenFree = function(){
+  var temp=true;
+  for(var i=0;i<this.plateIngredients.length;i++){
+  	if (this.plateIngredients[i].glutenFree===false){
+		temp=false;
+  	} 
+  	return temp;
+   }	
+};
+	//console.log(guacPlate.isGlutenFree());
+	//console.log(bluePlate);
+
+// is GlutenFree method
+Plate.prototype.isCitrusFree = function(){
+  var temp=true;
+  for(var i=0;i<this.plateIngredients.length;i++){
+  	if (this.plateIngredients[i].citrusFree===false){
+		temp=false;
+  	} 
+  	return temp;
+   }	
+};
+	//console.log(yellowPlate.isCitrusFree());
+	//console.log(bluePlate);	
 
 //Order constructor
 var Order = function(plate){
@@ -145,18 +153,21 @@ Order.prototype.toString = function() {
 	//console.log(order3.toString());
 
 //Menu constructor
-var Menu = function(plate){
+var Menu = function(plate,drink){
 	this.plate=plate;
+	this.drink=drink;
 };	
 
 //Menu instances
-var menuItem1 = new Menu([bluePlate]);
-var menuItem2 = new Menu([bluePlate,redPlate]);
-var menuItem3 = new Menu([bluePlate,redPlate,yellowPlate]);
-	//console.log(menuItem1);
+var menuItem1 = new Menu(bluePlate,margarita);
+var menuItem2 = new Menu(redPlate,margarita);
+var menuItem3 = new Menu(yellowPlate,margarita);
+var menuItem4 = new Menu(guacPlate,margarita);
+	console.log(menuItem4);
 
 Menu.prototype.toString = function() {
- 	var menuInfo = "Menu (made up of plates): "+this.plate +"\n";
+ 	var menuInfo = "Menu (made up of plates and a margarita): \n"+this.plate +"\n"
+ 						+this.drink;
  	return menuInfo;
  };
 	//console.log(menuItem3.toString());
@@ -170,7 +181,7 @@ var Restaurant = function(restaurantName,restaurantDescription,restaurantMenu){
 
 //Restaurant instances
 var restaurantLunch = new Restaurant("JoseAtLunch","Lunchtime Mexican Specials",[menuItem1]);
-var restaurantDinner = new Restaurant("Jose's","Best Mexican Food West of my Mom's",[menuItem1,menuItem2,menuItem3]);
+var restaurantDinner = new Restaurant("Jose's","Best Mexican Food West of my Mom's",[menuItem1,menuItem2,menuItem3,menuItem4]);
 	//console.log(restaurantDinner);
 
 Restaurant.prototype.toString = function() {
@@ -181,6 +192,7 @@ Restaurant.prototype.toString = function() {
  	return restauInfo;
  };
  	//console.log(restaurantLunch.toString());
+ 	console.log(restaurantDinner.toString());
 
 //Customer constructor
 var Customer = function(dietaryPreference){
