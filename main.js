@@ -80,6 +80,27 @@ var Plate = function(plateName,plateDescription,platePrice,plateIngredients){
 
 	// console.log(bluePlate.plateIngredients);
 
+Plate.prototype.toString = function() {
+ 	var plateInfo = "\n Plate Name: "+this.plateName +"\n"
+ 					+"Plate Description: "+this.plateDescription +"\n"
+ 					+"Plate Price: "+ this.platePrice +"\n"
+ 					+"Plate Ingredients: "+this.plateIngredients+"\n";
+
+ 	return plateInfo;
+ };
+	//	console.log(bluePlate.toString());
+	//console.log(bluePlate.plateIngredients);
+
+// ***********
+// ***********
+// Plate.prototype.isVegan = function() {
+//	plateIngredients.find(function { ** write inline function to return true if vegan = true})
+ // }
+//************
+//***********
+
+
+
 //Order constructor
 var Order = function(plate){
 	this.plate=plate;
@@ -91,6 +112,11 @@ var order2 = new Order([bluePlate,redPlate]);
 var order3 = new Order([bluePlate,redPlate,yellowPlate]);
 	//console.log(order1);
 
+Order.prototype.toString = function() {
+ 	var orderInfo = "Order (made up of plates): "+this.plate +"\n";
+ 	return orderInfo;
+ };
+	//console.log(order3.toString());
 
 //Menu constructor
 var Menu = function(plate){
@@ -102,6 +128,12 @@ var menuItem1 = new Menu([bluePlate]);
 var menuItem2 = new Menu([bluePlate,redPlate]);
 var menuItem3 = new Menu([bluePlate,redPlate,yellowPlate]);
 	//console.log(menuItem1);
+
+Menu.prototype.toString = function() {
+ 	var menuInfo = "Menu (made up of plates): "+this.plate +"\n";
+ 	return menuInfo;
+ };
+	//console.log(menuItem3.toString());
 
 //Restaurant constructor
 var Restaurant = function(restaurantName,restaurantDescription,restaurantMenu){
@@ -115,6 +147,14 @@ var restaurantLunch = new Restaurant("JoseAtLunch","Lunchtime Mexican Specials",
 var restaurantDinner = new Restaurant("Jose's","Best Mexican Food West of my Mom's",[menuItem1,menuItem2,menuItem3]);
 	//console.log(restaurantDinner);
 
+Restaurant.prototype.toString = function() {
+ 	var restauInfo = "\n Restaurant Name: "+this.restaurantName +"\n"
+ 					+"Restaurant Description: "+this.restaurantDescription +"\n"
+ 					+"Restaurant Menu: \n"+ this.restaurantMenu +"\n";
+
+ 	return restauInfo;
+ };
+ 	//console.log(restaurantLunch.toString());
 
 //Customer constructor
 var Customer = function(dietaryPreference){
@@ -127,6 +167,11 @@ var janeSmith = new Customer('vegan');
 var joeWillikers = new Customer('glutenFree');
 	//console.log(janeSmith);
 
+Customer.prototype.toString = function() {
+ 	var customerInfo = "Dietary Preference: "+this.dietaryPreference +"\n";
+ 	return customerInfo;
+ };
+ 	//console.log(janeSmith.toString());
 
 
 
